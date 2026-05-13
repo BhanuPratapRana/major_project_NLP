@@ -53,6 +53,11 @@ const Home = () => {
     }
   };
 
+  const handleClearHistory = () => {
+    setHistory([]);
+    localStorage.removeItem('newsHistory');
+  };
+
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
       {/* Background decoration */}
@@ -100,7 +105,7 @@ const Home = () => {
             )}
           </AnimatePresence>
 
-          <HistoryPanel history={history} />
+          <HistoryPanel history={history} onClearHistory={handleClearHistory} />
         </div>
       </main>
     </div>

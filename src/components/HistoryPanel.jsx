@@ -1,15 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { History, Clock } from 'lucide-react';
+import { History, Clock, Trash2 } from 'lucide-react';
 
-const HistoryPanel = ({ history }) => {
+const HistoryPanel = ({ history, onClearHistory }) => {
   if (!history || history.length === 0) return null;
 
   return (
     <div className="mt-12 mb-24">
-      <div className="flex items-center gap-2 mb-6">
-        <History className="h-6 w-6 text-slate-500" />
-        <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-200">Recent Analyses</h2>
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-2">
+          <History className="h-6 w-6 text-slate-500" />
+          <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-200">Recent Analyses</h2>
+        </div>
+        <button 
+          onClick={onClearHistory}
+          className="flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 dark:bg-red-900/20 dark:hover:bg-red-900/40 dark:text-red-400 rounded-lg transition-colors"
+        >
+          <Trash2 className="h-4 w-4" />
+          Clear All
+        </button>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
